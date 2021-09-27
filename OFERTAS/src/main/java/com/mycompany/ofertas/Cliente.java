@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto;
+package com.mycompany.ofertas;
 
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
@@ -20,7 +20,7 @@ public class Cliente {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         try {
             Registry miRegistro = LocateRegistry.getRegistry("localhost", 1099);
             ImpOfertas o = (ImpOfertas)Naming.lookup("//localhost/ImpOfertas");

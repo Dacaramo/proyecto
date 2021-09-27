@@ -3,26 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto;
-
-import java.util.ArrayList;
+package com.mycompany.ofertas;
 
 /**
  *
  * @author juanc
  */
-public class Empleador {
+public class Aspirante {
     private String id;
     private String nombre;
-    private ArrayList<Oferta> ofertas;
+    private int edad;
 
-    public Empleador() {
+    public Aspirante() {
     }
 
-    public Empleador(String id, String nombre, ArrayList<Oferta> ofertas) {
+    public Aspirante(String id, String nombre, int edad) {
         this.id = id;
         this.nombre = nombre;
-        this.ofertas = ofertas;
+        this.edad = edad;
     }
 
     public String getId() {
@@ -41,14 +39,13 @@ public class Empleador {
         this.nombre = nombre;
     }
 
-    public ArrayList<Oferta> getOfertas() {
-        return ofertas;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setOfertas(ArrayList<Oferta> ofertas) {
-        this.ofertas = ofertas;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
-    
     
     
 }

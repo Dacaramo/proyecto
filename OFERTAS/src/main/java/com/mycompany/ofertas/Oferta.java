@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto;
+package com.mycompany.ofertas;
 
-import proyecto.enums.Sector;
+import com.mycompany.ofertas.enums.Sector;
 
 /**
  *
@@ -78,7 +78,6 @@ public class Oferta {
     public void setEmpleador(Empleador empleador) {
         this.empleador = empleador;
     }
-    
     
     
 }

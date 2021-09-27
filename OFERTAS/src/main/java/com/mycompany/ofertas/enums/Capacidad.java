@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.enums;
+package com.mycompany.ofertas.enums;
 
 /**
  *
  * @author juanc
  */
 public enum Capacidad {
-    PREGRADO,
+     PREGRADO,
     MAESTRIA,
     DOCTORADO,
     EXPERIENCIA_LABORAL,
