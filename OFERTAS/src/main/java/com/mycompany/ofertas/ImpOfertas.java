@@ -7,6 +7,7 @@ package com.mycompany.ofertas;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,4 +15,9 @@ import java.rmi.RemoteException;
  */
 public interface ImpOfertas extends Remote {
     public void met1() throws RemoteException;
+    public int suma(int a, int b) throws RemoteException;
+    public ArrayList<Empleador> retornarEmpleador() throws RemoteException;
+    public ArrayList<Aspirante> retornarAspirantes() throws RemoteException;
+    public void registrarEmpleador(Empleador emp) throws RemoteException;
+    public void registrarAspirante(Aspirante asp) throws RemoteException;
 }

@@ -6,12 +6,13 @@
 package com.mycompany.ofertas;
 
 import com.mycompany.ofertas.enums.Sector;
+import java.io.Serializable;
 
 /**
  *
  * @author juanc
  */
-public class Oferta {
+public class Oferta implements Serializable{
     private String id;
     private String nombre;
     private Sector sector;

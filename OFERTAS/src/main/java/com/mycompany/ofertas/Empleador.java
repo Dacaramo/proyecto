@@ -5,31 +5,34 @@
  */
 package com.mycompany.ofertas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author juanc
  */
-public class Empleador {
-    private String id;
+public class Empleador implements Serializable {
+    private int id;
     private String nombre;
+    private String password;
     private ArrayList<Oferta> ofertas;
 
     public Empleador() {
     }
 
-    public Empleador(String id, String nombre, ArrayList<Oferta> ofertas) {
+    public Empleador(int id, String nombre, String password, ArrayList<Oferta> ofertas) {
         this.id = id;
         this.nombre = nombre;
+        this.password = password;
         this.ofertas = ofertas;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -41,6 +44,14 @@ public class Empleador {
         this.nombre = nombre;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public ArrayList<Oferta> getOfertas() {
         return ofertas;
     }
@@ -48,6 +59,9 @@ public class Empleador {
     public void setOfertas(ArrayList<Oferta> ofertas) {
         this.ofertas = ofertas;
     }
-    
+
+ 
+   
+
     
 }

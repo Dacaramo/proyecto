@@ -5,29 +5,33 @@
  */
 package com.mycompany.ofertas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author juanc
  */
-public class Aspirante {
-    private String id;
+public class Aspirante implements Serializable{
+    private int id;
     private String nombre;
+    private String password;
     private int edad;
 
     public Aspirante() {
     }
 
-    public Aspirante(String id, String nombre, int edad) {
+    public Aspirante(int id, String nombre, String password, int edad) {
         this.id = id;
         this.nombre = nombre;
+        this.password = password;
         this.edad = edad;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -39,6 +43,14 @@ public class Aspirante {
         this.nombre = nombre;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getEdad() {
         return edad;
     }
@@ -46,6 +58,9 @@ public class Aspirante {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
+    
+   
     
     
 }
