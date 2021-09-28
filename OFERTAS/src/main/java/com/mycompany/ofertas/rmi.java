@@ -56,6 +56,16 @@ public class rmi extends UnicastRemoteObject implements ImpOfertas {
     public void registrarAspirante(Aspirante asp) throws RemoteException {
          aspirantes.add(asp);
     }
+
+    @Override
+    public void IngresarOferta(Oferta af) throws RemoteException {
+          ofertas.add(af);
+    }
+
+    @Override
+    public ArrayList<Oferta> retornarOfertas() throws RemoteException {
+        return ofertas;
+    }
     
     
 }

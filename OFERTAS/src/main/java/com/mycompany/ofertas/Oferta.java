@@ -10,18 +10,29 @@ public class Oferta implements Serializable{
     private int edadRequerida;
     private float sueldo;
     private Empleador empleador;
+    private String requisitos;
 
     public Oferta() {
     }
 
-    public Oferta(String id, String nombre, Sector sector, int edadRequerida, float sueldo, Empleador empleador) {
+    public Oferta(String id, String nombre, Sector sector, int edadRequerida, float sueldo, Empleador empleador, String requisitos) {
         this.id = id;
         this.nombre = nombre;
         this.sector = sector;
         this.edadRequerida = edadRequerida;
         this.sueldo = sueldo;
         this.empleador = empleador;
+        this.requisitos = requisitos;
     }
+
+    public String getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(String requisitos) {
+        this.requisitos = requisitos;
+    }
+
 
     public String getId() {
         return id;

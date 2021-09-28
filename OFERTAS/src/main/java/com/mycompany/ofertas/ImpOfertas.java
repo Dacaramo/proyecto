@@ -18,6 +18,8 @@ public interface ImpOfertas extends Remote {
     public int suma(int a, int b) throws RemoteException;
     public ArrayList<Empleador> retornarEmpleador() throws RemoteException;
     public ArrayList<Aspirante> retornarAspirantes() throws RemoteException;
+    public ArrayList<Oferta> retornarOfertas() throws RemoteException;
     public void registrarEmpleador(Empleador emp) throws RemoteException;
     public void registrarAspirante(Aspirante asp) throws RemoteException;
+    public void IngresarOferta(Oferta af) throws RemoteException;
 }
