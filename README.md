@@ -14,4 +14,4 @@
 
 **RDBMS**: `MySQL`
 
-> Interfaz web para visualización de las relaciones y prueba de queries: www.phpmyadmin.co
+> Interfaz web para visualización de las relaciones y pruebas: www.phpmyadmin.co
