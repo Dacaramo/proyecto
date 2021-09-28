@@ -28,7 +28,7 @@ public class Cliente {
             Registry miRegistro = LocateRegistry.getRegistry("localhost", 1099);
             ImpOfertas o = (ImpOfertas)Naming.lookup("//localhost/ImpOfertas");
             
-           while(true){
+           while(op!=3){
             System.out.println("*/-------SISTEMA DE OFERTAS LABORALES-------/*");
             System.out.println("1.INGRESAR");
             System.out.println("2.REGISTRARSE");
