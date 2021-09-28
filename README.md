@@ -13,3 +13,5 @@
 **Numero de puerto**: `3306`
 
 **RDBMS**: `MySQL`
+
+> Interfaz web para visualización de las relaciones y prueba de queries: www.phpmyadmin.co
