@@ -10,7 +10,7 @@ package com.mycompany.ofertas.enums;
  * @author juanc
  */
 public enum Capacidad {
-     PREGRADO,
+    PREGRADO,
     MAESTRIA,
     DOCTORADO,
     EXPERIENCIA_LABORAL,
