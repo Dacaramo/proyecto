@@ -5,6 +5,7 @@
  */
 package com.mycompany.ofertas;
 
+import com.mycompany.ofertas.enums.Sector;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -65,6 +66,36 @@ public class rmi extends UnicastRemoteObject implements ImpOfertas {
     @Override
     public ArrayList<Oferta> retornarOfertas() throws RemoteException {
         return ofertas;
+    }
+
+    @Override
+    public void SuscribirSector1(Sector s, int ID) throws RemoteException {
+        for(Aspirante asp: aspirantes){
+            if(asp.getId() == ID){
+                asp.setSector1(s);
+                asp.setNsubs(asp.getNsubs()+1);
+            }
+        }
+    }
+
+    @Override
+    public void SuscribirSector2(Sector s, int ID) throws RemoteException {
+        for(Aspirante asp: aspirantes){
+            if(asp.getId() == ID){
+                asp.setSector2(s);
+                asp.setNsubs(asp.getNsubs()+1);
+            }
+        }
+    }
+
+    @Override
+    public Aspirante retornarAspirante(int id) throws RemoteException {
+        for(Aspirante asp: aspirantes){
+            if(id == asp.getId()){
+                return asp;
+            }
+        }
+        return null;
     }
     
     

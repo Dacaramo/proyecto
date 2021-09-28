@@ -16,94 +16,82 @@ public class Cliente {
         int op = 0;
         try {//25.86.91.11
             Registry miRegistro = LocateRegistry.getRegistry("localhost", 1099);
-            ImpOfertas o = (ImpOfertas)Naming.lookup("//localhost/ImpOfertas");
-            
-           while(op!=3){
-            System.out.println("*/-------SISTEMA DE OFERTAS LABORALES-------/*");
-            System.out.println("1.INGRESAR");
-            System.out.println("2.REGISTRARSE");
-            System.out.println("3.SALIR");
-            System.out.println("*/------------------------------------------/*");
-            op = sc.nextInt();
-            sc.nextLine();
-            switch(op){
-                case 1:
-                    System.out.println("Ingrese nombre de Usuario: ");
-                    String usuario = sc.nextLine();
-                    System.out.println("Ingrese clave: ");
-                    System.out.println("*/------------------------------------------/*");
-                    String clave = sc.nextLine();
-                    ArrayList<Empleador> emp = o.retornarEmpleador();
-                    ArrayList<Aspirante> asp = o.retornarAspirantes();
-                    for(Empleador empl:emp){
-                        if(usuario.equals(empl.getNombre()) && clave.equals(empl.getClave())){
-                            menuEmpleador(empl,o);
-                        }
-                    }
-                    for (Aspirante aspi: asp){
-                        if(usuario.equals(aspi.getNombre()) && clave.equals(aspi.getClave())){
-                            menuAspirante(aspi,o);
-                        }
-                    
-                    }
-                    break;
-                case 2:
-                    System.out.println("*/--------SELECCIONE TIPO DE USUARIO--------/*");
-                    System.out.println("1.EMPLEADOR");
-                    System.out.println("2.ASPIRANTE");
-                    System.out.println("*/------------------------------------------/*");
-                    int op2 = sc.nextInt();
-                    sc.nextLine();
-                    switch(op2){
-                        case 1:
-                            Empleador e = new Empleador();
-                            System.out.println("Ingrese su nombre de usuario: ");
-                            e.setNombre(sc.nextLine());
-                            System.out.println("Ingrese una clave: ");
-                            e.setClave(sc.nextLine());
-                            e.setId(GenerarCodigoUsuarios());
-                            o.registrarEmpleador(e);
-                            
-                            ArrayList<Empleador> empImp = o.retornarEmpleador();
-                            for(Empleador empleador: empImp){
-                                System.out.println("ID: "+empleador.getId());
-                                System.out.println("Nombre: "+empleador.getNombre());
-                                System.out.println("clave: " +empleador.getClave());
+            ImpOfertas o = (ImpOfertas) Naming.lookup("//localhost/ImpOfertas");
+
+            while (op != 3) {
+                System.out.println("*/-------SISTEMA DE OFERTAS LABORALES-------/*");
+                System.out.println("1.INGRESAR");
+                System.out.println("2.REGISTRARSE");
+                System.out.println("3.SALIR");
+                System.out.println("*/------------------------------------------/*");
+                op = sc.nextInt();
+                sc.nextLine();
+                switch (op) {
+                    case 1:
+                        System.out.println("Ingrese nombre de Usuario: ");
+                        String usuario = sc.nextLine();
+                        System.out.println("Ingrese clave: ");
+                        String clave = sc.nextLine();
+                        System.out.println("*/------------------------------------------/*");
+                        ArrayList<Empleador> emp = o.retornarEmpleador();
+                        ArrayList<Aspirante> asp = o.retornarAspirantes();
+                        for (Empleador empl : emp) {
+                            if (usuario.equals(empl.getNombre()) && clave.equals(empl.getClave())) {
+                                menuEmpleador(empl, o);
                             }
-                            break;
-                        case 2:
-                            Aspirante a = new Aspirante();
-                            System.out.println("Ingrese su nombre de usuario: ");
-                            a.setNombre(sc.nextLine());
-                            System.out.println("Ingrese una clave: ");
-                            a.setClave(sc.nextLine());
-                            System.out.println("Ingrese su edad: ");
-                            a.setEdad(sc.nextInt());
-                            a.setId(GenerarCodigoUsuarios());
-                            o.registrarAspirante(a);
-                            
-                            ArrayList<Aspirante> AspImp = o.retornarAspirantes();
-                            for (Aspirante aspirante: AspImp){
-                                System.out.println("ID: "+aspirante.getId());
-                                System.out.println("Nombre: "+aspirante.getNombre());
-                                System.out.println("clave: "+aspirante.getClave());
-                                System.out.println("Edad: "+aspirante.getEdad());
+                        }
+                        for (Aspirante aspi : asp) {
+                            if (usuario.equals(aspi.getNombre()) && clave.equals(aspi.getClave())) {
+                                menuAspirante(aspi, o);
                             }
-                            break;
-                    
-                    }
-                    break;
-            
+
+                        }
+                        break;
+                    case 2:
+                        System.out.println("*/--------SELECCIONE TIPO DE USUARIO--------/*");
+                        System.out.println("1.EMPLEADOR");
+                        System.out.println("2.ASPIRANTE");
+                        System.out.println("*/------------------------------------------/*");
+                        int op2 = sc.nextInt();
+                        sc.nextLine();
+                        switch (op2) {
+                            case 1:
+                                Empleador e = new Empleador();
+                                System.out.println("Ingrese su nombre de usuario: ");
+                                e.setNombre(sc.nextLine());
+                                System.out.println("Ingrese una clave: ");
+                                e.setClave(sc.nextLine());
+                                e.setId(GenerarCodigoUsuarios());
+                                o.registrarEmpleador(e);
+
+                                break;
+                            case 2:
+                                Aspirante a = new Aspirante();
+                                System.out.println("Ingrese su nombre de usuario: ");
+                                a.setNombre(sc.nextLine());
+                                System.out.println("Ingrese una clave: ");
+                                a.setClave(sc.nextLine());
+                                System.out.println("Ingrese su edad: ");
+                                a.setEdad(sc.nextInt());
+                                a.setId(GenerarCodigoUsuarios());
+                                o.registrarAspirante(a);
+
+                                break;
+
+                        }
+                        break;
+
+                }
             }
-        }
         } catch (Exception e) {
-            System.out.println("Error de conexion......"+e);
+            System.out.println("Error de conexion......" + e);
         }
     }
-    public static void menuEmpleador(Empleador emp, ImpOfertas o) throws RemoteException{
+
+    public static void menuEmpleador(Empleador emp, ImpOfertas o) throws RemoteException {
         Scanner sc = new Scanner(System.in);
         int op = 0, op2 = 0;
-        while (op!=4){
+        while (op != 4) {
             System.out.println("*/-------MENU DE EMPLEADOR-------/*");
             System.out.println("1.Crear oferta.");
             System.out.println("2......");
@@ -112,10 +100,10 @@ public class Cliente {
             System.out.println("*/-------------------------------/*");
             op = sc.nextInt();
             sc.nextLine();
-            switch(op){
+            switch (op) {
                 case 1:
                     Oferta of = new Oferta();
-                    of.setId(GenerarCodigoOferta()+"");
+                    of.setId(GenerarCodigoOferta() + "");
                     System.out.println("Ingrese nombre de la oferta: ");
                     of.setNombre(sc.nextLine());
                     System.out.println("Ingrese los requisitos sobre la oferta:");
@@ -128,7 +116,7 @@ public class Cliente {
                     System.out.println("5.APOYO_ADMINISTRATIVO");
                     op2 = sc.nextInt();
                     sc.nextLine();
-                    switch(op2){
+                    switch (op2) {
                         case 1:
                             of.setSector(Sector.FUERZAS_MILITARES);
                             break;
@@ -154,24 +142,26 @@ public class Cliente {
                     of.setEmpleador(emp);
                     o.IngresarOferta(of);
                     ArrayList<Oferta> ofertas = o.retornarOfertas();
-                    for(Oferta ofer: ofertas){
-                        System.out.println("ID: "+ofer.getId());
-                        System.out.println("Nombre: "+ofer.getNombre());
-                        System.out.println("Requisitos: "+ofer.getRequisitos());
-                        System.out.println("Edad requerida: "+ofer.getEdadRequerida());
-                        System.out.println("Empleador: " +ofer.getEmpleador().getNombre());
-                        System.out.println("Sector: "+ofer.getSector());
-                        System.out.println("Sueldo: "+ofer.getSueldo());
+                    for (Oferta ofer : ofertas) {
+                        System.out.println("ID: " + ofer.getId());
+                        System.out.println("Nombre: " + ofer.getNombre());
+                        System.out.println("Requisitos: " + ofer.getRequisitos());
+                        System.out.println("Edad requerida: " + ofer.getEdadRequerida());
+                        System.out.println("Empleador: " + ofer.getEmpleador().getNombre());
+                        System.out.println("Sector: " + ofer.getSector());
+                        System.out.println("Sueldo: " + ofer.getSueldo());
                     }
                     break;
             }
         }
-    
+
     }
-    public static void menuAspirante(Aspirante asp,ImpOfertas o){
+
+    public static void menuAspirante(Aspirante asp, ImpOfertas o) throws RemoteException {
         Scanner sc = new Scanner(System.in);
-        int op = 0;
-        while (op!=4){
+        int op = 0, op2 = 0;
+        while (op != 4) {
+            Aspirante aspaux = o.retornarAspirante(asp.getId());
             System.out.println("*/-------MENU DE ASPIRANTE-------/*");
             System.out.println("1.Suscribirse a sector");
             System.out.println("2......");
@@ -180,27 +170,119 @@ public class Cliente {
             System.out.println("*/-------------------------------/*");
             op = sc.nextInt();
             sc.nextLine();
-            switch(op){
+            switch (op) {
                 case 1:
-                     
+                    if (aspaux.getNsubs() < 2) {
+                        if (aspaux.getSector1() == Sector.NINGUNO) {
+                            System.out.println("Seleccionar un sector:");
+                            System.out.println("1.FUERZAS_MILITARES");
+                            System.out.println("2.GERENCIA");
+                            System.out.println("3.PROFESIONALES_INTELECTUALES");
+                            System.out.println("4.TECNICOS");
+                            System.out.println("5.APOYO_ADMINISTRATIVO");
+                            op2 = sc.nextInt();
+                            sc.nextLine();
+                            switch (op2) {
+                                case 1:
+                                    o.SuscribirSector1(Sector.FUERZAS_MILITARES, asp.getId());
+                                    System.out.println("ENTRE");
+                                    break;
+                                case 2:
+                                    o.SuscribirSector1(Sector.GERENCIA, asp.getId());
+                                    break;
+                                case 3:
+                                    o.SuscribirSector1(Sector.PROFESIONALES_INTELECTUALES, asp.getId());
+                                    break;
+                                case 4:
+                                    o.SuscribirSector1(Sector.TECNICOS, asp.getId());
+                                    break;
+                                case 5:
+                                    o.SuscribirSector1(Sector.APOYO_ADMINISTRATIVO, asp.getId());
+                                    break;
+                            }
+                            asp.setNsubs(asp.getNsubs() + 1);
+                        } else {
+                            System.out.println("Seleccionar un sector:");
+                            System.out.println("1.FUERZAS_MILITARES");
+                            System.out.println("2.GERENCIA");
+                            System.out.println("3.PROFESIONALES_INTELECTUALES");
+                            System.out.println("4.TECNICOS");
+                            System.out.println("5.APOYO_ADMINISTRATIVO");
+                            op2 = sc.nextInt();
+                            sc.nextLine();
+                            switch (op2) {
+                                case 1:
+                                    o.SuscribirSector2(Sector.FUERZAS_MILITARES, asp.getId());
+                                    System.out.println("ENTRE");
+                                    break;
+                                case 2:
+                                    o.SuscribirSector2(Sector.GERENCIA, asp.getId());
+                                    break;
+                                case 3:
+                                    o.SuscribirSector2(Sector.PROFESIONALES_INTELECTUALES, asp.getId());
+                                    break;
+                                case 4:
+                                    o.SuscribirSector2(Sector.TECNICOS, asp.getId());
+                                    break;
+                                case 5:
+                                    o.SuscribirSector2(Sector.APOYO_ADMINISTRATIVO, asp.getId());
+                                    break;
+                            }
+                            asp.setNsubs(asp.getNsubs() + 1);
+
+                        }
+                    }
+                    ImprimirAspirantes(o);
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
-                   
+
             }
         }
-    
+
     }
-    public static int GenerarCodigoUsuarios(){
+
+    public static int GenerarCodigoUsuarios() {
         Random ran = new Random();
         return ran.nextInt(9999) + 1000;
     }
-    public static int GenerarCodigoOferta(){
+
+    public static int GenerarCodigoOferta() {
         Random ran = new Random();
         return ran.nextInt(999999) + 100000;
     }
-    
-    
+
+    public static void ImprimirAspirantes(ImpOfertas o) throws RemoteException {
+        ArrayList<Aspirante> AspImp = o.retornarAspirantes();
+        for (Aspirante aspirante : AspImp) {
+            System.out.println("ID: " + aspirante.getId());
+            System.out.println("Nombre: " + aspirante.getNombre());
+            System.out.println("clave: " + aspirante.getClave());
+            System.out.println("Edad: " + aspirante.getEdad());
+            System.out.println("sector1: "+aspirante.getSector1());
+            System.out.println("sector2: "+aspirante.getSector2());
+            System.out.println(aspirante.getNsubs());
+        }
+    }
+
+    public static void ImprimirEmpleadores(ImpOfertas o) throws RemoteException {
+        ArrayList<Empleador> empImp = o.retornarEmpleador();
+        for (Empleador empleador : empImp) {
+            System.out.println("ID: " + empleador.getId());
+            System.out.println("Nombre: " + empleador.getNombre());
+            System.out.println("clave: " + empleador.getClave());
+        }
+    }
+    public static void ActualizarAspiranteSector(ImpOfertas o,Aspirante asp)throws RemoteException{
+        ArrayList<Aspirante> AspImp = o.retornarAspirantes();
+        for (Aspirante aspirante : AspImp) {
+           if(asp.getNombre().equals(aspirante.getNombre())){
+               aspirante.setSector1(asp.getSector1());
+               aspirante.setNsubs(aspirante.getNsubs()+1);
+           }
+        }
+    }
+
 }

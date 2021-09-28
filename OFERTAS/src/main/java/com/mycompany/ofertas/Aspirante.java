@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Aspirante implements Serializable{
     private int id;
+    private int Nsubs;
     private String nombre;
     private String clave;
     private int edad;
@@ -12,6 +13,14 @@ public class Aspirante implements Serializable{
     private Sector sector2;
     ;
 
+    public int getNsubs() {
+        return Nsubs;
+    }
+
+    public void setNsubs(int Nsubs) {
+        this.Nsubs = Nsubs;
+    }
+    
     public Sector getSector1() {
         return sector1;
     }
@@ -30,17 +39,22 @@ public class Aspirante implements Serializable{
     
 
     public Aspirante() {
+        this.sector1 = Sector.NINGUNO;
+        this.sector2 = Sector.NINGUNO;
+        this.Nsubs = 0 ;
     }
 
-    public Aspirante(int id, String nombre, String clave, int edad, Sector sector1, Sector sector2) {
+    public Aspirante(int id, int Nsubs, String nombre, String clave, int edad, Sector sector1, Sector sector2) {
         this.id = id;
+        this.Nsubs = Nsubs;
         this.nombre = nombre;
         this.clave = clave;
         this.edad = edad;
-        this.sector1 = sector1.NINGUNO;
-        this.sector2 = sector2.NINGUNO;
+        this.sector1 = sector1;
+        this.sector2 = sector2;
     }
-    
+
+   
     
 
     public int getId() {

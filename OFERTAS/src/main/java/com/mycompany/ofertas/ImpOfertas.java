@@ -5,6 +5,7 @@
  */
 package com.mycompany.ofertas;
 
+import com.mycompany.ofertas.enums.Sector;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -22,4 +23,7 @@ public interface ImpOfertas extends Remote {
     public void registrarEmpleador(Empleador emp) throws RemoteException;
     public void registrarAspirante(Aspirante asp) throws RemoteException;
     public void IngresarOferta(Oferta af) throws RemoteException;
+    public void SuscribirSector1(Sector s, int ID) throws RemoteException;
+    public void SuscribirSector2(Sector s, int ID) throws RemoteException;
+    public Aspirante retornarAspirante(int id) throws RemoteException;
 }
