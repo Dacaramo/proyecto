@@ -15,3 +15,7 @@
 **RDBMS**: `MySQL`
 
 > Interfaz web para visualización de las relaciones y pruebas: www.phpmyadmin.co
+
+## Diagrama de Entidad-Relación
+
+![](images/diagramaEntidadRelacion.png)
