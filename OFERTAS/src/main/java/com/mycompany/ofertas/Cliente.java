@@ -173,13 +173,23 @@ public class Cliente {
         int op = 0;
         while (op!=4){
             System.out.println("*/-------MENU DE ASPIRANTE-------/*");
-            System.out.println("1......");
+            System.out.println("1.Suscribirse a sector");
             System.out.println("2......");
             System.out.println("3......");
             System.out.println("4.SALIR");
             System.out.println("*/-------------------------------/*");
             op = sc.nextInt();
             sc.nextLine();
+            switch(op){
+                case 1:
+                     
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                   
+            }
         }
     
     }
