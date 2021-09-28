@@ -34,12 +34,12 @@ public class Cliente {
                     ArrayList<Empleador> emp = o.retornarEmpleador();
                     ArrayList<Aspirante> asp = o.retornarAspirantes();
                     for(Empleador empl:emp){
-                        if(usuario.equals(empl.getNombre()) && clave.equals(empl.getPassword())){
+                        if(usuario.equals(empl.getNombre()) && clave.equals(empl.getClave())){
                             menuEmpleador();
                         }
                     }
                     for (Aspirante aspi: asp){
-                        if(usuario.equals(aspi.getNombre()) && clave.equals(aspi.getPassword())){
+                        if(usuario.equals(aspi.getNombre()) && clave.equals(aspi.getClave())){
                             menuAspirante();
                         }
                     
@@ -58,7 +58,7 @@ public class Cliente {
                             System.out.println("Ingrese su nombre de usuario: ");
                             e.setNombre(sc.nextLine());
                             System.out.println("Ingrese una clave: ");
-                            e.setPassword(sc.nextLine());
+                            e.setClave(sc.nextLine());
                             e.setId(GenerarCodigoUsuarios());
                             o.registrarEmpleador(e);
                             
@@ -66,7 +66,7 @@ public class Cliente {
                             for(Empleador empleador: empImp){
                                 System.out.println("ID: "+empleador.getId());
                                 System.out.println("Nombre: "+empleador.getNombre());
-                                System.out.println("clave: " +empleador.getPassword());
+                                System.out.println("clave: " +empleador.getClave());
                             }
                             break;
                         case 2:
@@ -74,7 +74,7 @@ public class Cliente {
                             System.out.println("Ingrese su nombre de usuario: ");
                             a.setNombre(sc.nextLine());
                             System.out.println("Ingrese una clave: ");
-                            a.setPassword(sc.nextLine());
+                            a.setClave(sc.nextLine());
                             System.out.println("Ingrese su edad: ");
                             a.setEdad(sc.nextInt());
                             a.setId(GenerarCodigoUsuarios());
@@ -84,7 +84,7 @@ public class Cliente {
                             for (Aspirante aspirante: AspImp){
                                 System.out.println("ID: "+aspirante.getId());
                                 System.out.println("Nombre: "+aspirante.getNombre());
-                                System.out.println("clave: "+aspirante.getPassword());
+                                System.out.println("clave: "+aspirante.getClave());
                                 System.out.println("Edad: "+aspirante.getEdad());
                             }
                             break;

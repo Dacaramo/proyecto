@@ -1,30 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.ofertas;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- *
- * @author juanc
- */
 public class Empleador implements Serializable {
     private int id;
     private String nombre;
-    private String password;
+    private String clave;
     private ArrayList<Oferta> ofertas;
 
     public Empleador() {
     }
 
-    public Empleador(int id, String nombre, String password, ArrayList<Oferta> ofertas) {
+    public Empleador(int id, String nombre, String clave, ArrayList<Oferta> ofertas) {
         this.id = id;
         this.nombre = nombre;
-        this.password = password;
+        this.clave = clave;
         this.ofertas = ofertas;
     }
 
@@ -44,12 +35,12 @@ public class Empleador implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getClave() {
+        return clave;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public ArrayList<Oferta> getOfertas() {
@@ -59,9 +50,4 @@ public class Empleador implements Serializable {
     public void setOfertas(ArrayList<Oferta> ofertas) {
         this.ofertas = ofertas;
     }
-
- 
-   
-
-    
 }

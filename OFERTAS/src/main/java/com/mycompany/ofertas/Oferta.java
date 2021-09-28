@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.ofertas;
 
 import com.mycompany.ofertas.enums.Sector;
 import java.io.Serializable;
 
-/**
- *
- * @author juanc
- */
 public class Oferta implements Serializable{
     private String id;
     private String nombre;
