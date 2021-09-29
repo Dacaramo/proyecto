@@ -232,7 +232,7 @@ public class Cliente {
 
                         }
                     }
-                    ImprimirAspirantes(o);
+                    //ImprimirAspirantes(o);
                     break;
                 case 2:
                     break;
