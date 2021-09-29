@@ -18,4 +18,4 @@
 
 ## Diagrama de Entidad-Relación
 
-![](images/diagramaEntidadRelacion.png)
+![](images/diagramaER.png)
