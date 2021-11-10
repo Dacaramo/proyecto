@@ -1,9 +1,11 @@
-package model.enums;
+
+package com.mycompany.ofertas.enums;
 
 public enum Sector {
     FUERZAS_MILITARES,
     GERENCIA,
     PROFESIONALES_INTELECTUALES,
     TECNICOS,
-    APOYO_ADMINISTRATIVO
+    APOYO_ADMINISTRATIVO,
+    NINGUNO
 }

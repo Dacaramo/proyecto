@@ -1,4 +1,5 @@
-package model.enums;
+
+package com.mycompany.ofertas.enums;
 
 public enum Capacidad {
     PREGRADO,

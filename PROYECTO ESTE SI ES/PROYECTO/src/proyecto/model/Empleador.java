@@ -2,18 +2,16 @@ package com.mycompany.ofertas;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
-public class Empleador implements Serializable {
+public class Empleador implements Serializable { //Para generar una nueva oferta de trabajo se debe pasar el id del Empleador y el id de la oferta
     private int id;
     private String nombre;
     private String clave;
-    private ArrayList<Oferta> ofertas;
+    private ArrayList<Oferta> ofertas; //El empleador genera ofertas
 
-    public Empleador() {
-    }
-
-    public Empleador(int id, String nombre, String clave, ArrayList<Oferta> ofertas) {
-        this.id = id;
+    public Empleador(String nombre, String clave, ArrayList<Oferta> ofertas) {
+        this.id = UUID.randomUUID().toString();
         this.nombre = nombre;
         this.clave = clave;
         this.ofertas = ofertas;

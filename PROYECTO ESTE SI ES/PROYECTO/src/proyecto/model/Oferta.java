@@ -2,6 +2,7 @@ package com.mycompany.ofertas;
 
 import com.mycompany.ofertas.enums.Sector;
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Oferta implements Serializable{
     private String id;
@@ -10,27 +11,24 @@ public class Oferta implements Serializable{
     private int edadRequerida;
     private float sueldo;
     private Empleador empleador;
-    private String requisitos;
+    private ArrayList<Capacidad> capacidadesRequeridas;
 
-    public Oferta() {
-    }
-
-    public Oferta(String id, String nombre, Sector sector, int edadRequerida, float sueldo, Empleador empleador, String requisitos) {
-        this.id = id;
+    public Oferta(String nombre, Sector sector, int edadRequerida, float sueldo, Empleador empleador, ArrayList<Capacidad> capacidadesRequeridas) {
+        this.id = UUID.randomUUID().toString();
         this.nombre = nombre;
         this.sector = sector;
         this.edadRequerida = edadRequerida;
         this.sueldo = sueldo;
         this.empleador = empleador;
-        this.requisitos = requisitos;
+        this.capacidadesRequeridas = requisitos;
     }
 
-    public String getRequisitos() {
-        return requisitos;
+    public ArrayList<Capacidad> getCapacidadesRequeridas() {
+        return capacidadesRequeridas;
     }
 
-    public void setRequisitos(String requisitos) {
-        this.requisitos = requisitos;
+    public void setCapacidadesRequeridas(ArrayList<Capacidad> capacidadesRequeridas) {
+        this.capacidadesRequeridas = capacidadesRequeridas;
     }
 
 
@@ -80,7 +78,5 @@ public class Oferta implements Serializable{
 
     public void setEmpleador(Empleador empleador) {
         this.empleador = empleador;
-    }
-    
-    
+    }  
 }
