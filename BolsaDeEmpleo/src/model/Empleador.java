@@ -25,6 +25,9 @@ public class Empleador {
         this.ofertas = ofertas;
     }
 
+    public Empleador() {
+    }
+    
     public String getId() {
         return id;
     }
