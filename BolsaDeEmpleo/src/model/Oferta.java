@@ -1,10 +1,20 @@
-package com.mycompany.ofertas;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
 
-import com.mycompany.ofertas.enums.Sector;
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.UUID;
+import model.enums.Capacidad;
+import model.enums.Sector;
 
-public class Oferta implements Serializable{
+/**
+ *
+ * @author HP-PC
+ */
+public class Oferta {
     private String id;
     private String nombre;
     private Sector sector;
@@ -20,7 +30,7 @@ public class Oferta implements Serializable{
         this.edadRequerida = edadRequerida;
         this.sueldo = sueldo;
         this.empleador = empleador;
-        this.capacidadesRequeridas = requisitos;
+        this.capacidadesRequeridas = capacidadesRequeridas;
     }
 
     public ArrayList<Capacidad> getCapacidadesRequeridas() {
@@ -78,5 +88,5 @@ public class Oferta implements Serializable{
 
     public void setEmpleador(Empleador empleador) {
         this.empleador = empleador;
-    }  
+    } 
 }

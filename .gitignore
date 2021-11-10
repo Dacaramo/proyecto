@@ -1,4 +1,5 @@
-/OFERTAS/target/
-/.vscode
-proyecto.session.sql
-/PROYECTO ESTE SI ES/PROYECTO/nbproject/private/
+/BolsaDeEmpleo/build/
+/BolsaDeEmpleo/nbproject/
+/BolsaDeEmpleo/test/
+/BolsaDeEmpleo/build
+/BolsaDeEmpleo/manifest.mf

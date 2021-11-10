@@ -1,11 +1,19 @@
-package com.mycompany.ofertas;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Empleador implements Serializable { //Para generar una nueva oferta de trabajo se debe pasar el id del Empleador y el id de la oferta
-    private int id;
+/**
+ *
+ * @author HP-PC
+ */
+public class Empleador {
+    private String id;
     private String nombre;
     private String clave;
     private ArrayList<Oferta> ofertas; //El empleador genera ofertas
@@ -17,11 +25,11 @@ public class Empleador implements Serializable { //Para generar una nueva oferta
         this.ofertas = ofertas;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
