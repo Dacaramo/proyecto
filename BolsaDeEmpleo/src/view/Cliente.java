@@ -6,6 +6,7 @@
 package view;
 
 import java.util.Scanner;
+import model.Aspirante;
 import model.Empleador;
 import org.zeromq.ZMQ;
 
@@ -70,6 +71,19 @@ public class Cliente {
                 Thread.sleep(1000); 
                 break;
             case 2:
+                Aspirante asp = new Aspirante();
+                System.out.println("Ingrese un nombre de usuario:");
+                String NombreA = sc.nextLine();
+                asp.setNombre(NombreA);
+                System.out.println("Ingrese clave de ingreso:");
+                String claveA = sc.nextLine();
+                asp.setClave(claveA);
+                System.out.println("Ingrese su edad:");
+                int edad =sc.nextInt();
+                asp.setEdad(edad);
+                System.out.println("Enviando datos....");
+                socket.send(asp.toString().getBytes(),0);
+                Thread.sleep(1000); 
                 break;
         }
         socket.close();

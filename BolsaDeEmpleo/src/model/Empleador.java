@@ -63,7 +63,7 @@ public class Empleador {
 
     @Override
     public String toString() {
-        return this.id+","+this.nombre+","+this.clave;
+        return "emp"+","+this.id+","+this.nombre+","+this.clave;
     }
     
 }

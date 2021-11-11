@@ -106,4 +106,10 @@ public class Aspirante {
     public void setCapacidades(ArrayList<Capacidad> capacidades) {
         this.capacidades = capacidades;
     }
+
+    @Override
+    public String toString() {
+        return "asp"+","+this.id+","+this.nombre+","+this.clave+","+this.edad;
+    }
+    
 }

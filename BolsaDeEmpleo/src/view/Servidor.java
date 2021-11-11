@@ -35,21 +35,30 @@ public class Servidor {
         socket.bind ("tcp://*:5555");
         try {
             while (!Thread.currentThread ().isInterrupted ()) {
-                /*byte[] reply = socket.recv(0);
-                System.out.println("Received Hello");
-                String request = "World" ;
-                socket.send(request.getBytes (), 0);
-                Thread.sleep(1000); // Do some 'work'*/
-                Empleador emp = new Empleador();
+                
                 byte[] reply = socket.recv(0);
                 String cad=new String(reply);
                 StringTokenizer tok = new StringTokenizer(cad,",");
-                emp.setId(tok.nextToken());
-                emp.setNombre(tok.nextToken());
-                emp.setClave(tok.nextToken());
-                System.out.println("Empleador registrado");
-                System.out.println("Datos:"+emp.getId()+" "+emp.getNombre()+" "+emp.getClave());
-                empleadoresTemp.add(emp);
+                String fl = tok.nextToken();
+                if(fl.equals("emp")){
+                    Empleador emp = new Empleador();
+                    emp.setId(tok.nextToken());
+                    emp.setNombre(tok.nextToken());
+                    emp.setClave(tok.nextToken());
+                    System.out.println("Empleador registrado");
+                    System.out.println("Datos:"+emp.getId()+" "+emp.getNombre()+" "+emp.getClave());
+                    empleadoresTemp.add(emp);
+                }else if(fl.equals("asp")){
+                    System.out.println("holii");
+                    Aspirante asp = new Aspirante();
+                    asp.setId(tok.nextToken());
+                    asp.setNombre(tok.nextToken());
+                    asp.setClave(tok.nextToken());
+                    asp.setEdad(Integer.parseInt(tok.nextToken()));
+                    System.out.println("Aspirante registrado");
+                    System.out.println("Datos:"+asp.getId()+" "+asp.getNombre()+" "+asp.getClave()+" "+asp.getEdad());
+                }
+               
                 
             }
         } catch(Exception e) {
