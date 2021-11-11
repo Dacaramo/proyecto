@@ -26,6 +26,7 @@ public class Empleador {
     }
 
     public Empleador() {
+        this.id = UUID.randomUUID().toString();
     }
     
     public String getId() {
@@ -59,4 +60,10 @@ public class Empleador {
     public void setOfertas(ArrayList<Oferta> ofertas) {
         this.ofertas = ofertas;
     }
+
+    @Override
+    public String toString() {
+        return this.id+","+this.nombre+","+this.clave;
+    }
+    
 }

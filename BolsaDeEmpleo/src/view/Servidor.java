@@ -8,6 +8,7 @@ package view;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 import model.Aspirante;
 import model.Empleador;
 import model.Oferta;
@@ -39,8 +40,17 @@ public class Servidor {
                 String request = "World" ;
                 socket.send(request.getBytes (), 0);
                 Thread.sleep(1000); // Do some 'work'*/
+                Empleador emp = new Empleador();
                 byte[] reply = socket.recv(0);
-                System.out.println("Nombre: " + new String(reply));
+                String cad=new String(reply);
+                StringTokenizer tok = new StringTokenizer(cad,",");
+                emp.setId(tok.nextToken());
+                emp.setNombre(tok.nextToken());
+                emp.setClave(tok.nextToken());
+                System.out.println("Empleador registrado");
+                System.out.println("Datos:"+emp.getId()+" "+emp.getNombre()+" "+emp.getClave());
+                empleadoresTemp.add(emp);
+                
             }
         } catch(Exception e) {
             StringWriter sw = new StringWriter();

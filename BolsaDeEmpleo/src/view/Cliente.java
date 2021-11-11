@@ -6,6 +6,7 @@
 package view;
 
 import java.util.Scanner;
+import model.Empleador;
 import org.zeromq.ZMQ;
 
 /**
@@ -17,7 +18,7 @@ public class Cliente {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
        int opcion = 0;
        Scanner sc = new Scanner(System.in);
        System.out.println("SISTEMA DE EMPLEO");
@@ -38,7 +39,7 @@ public class Cliente {
        }while(opcion != 3);
       
     }
-    private static void Registro(){
+    private static void Registro() throws InterruptedException{
        
          ZMQ.Context context = ZMQ.context(1);
         // Socket to talk to server
@@ -56,10 +57,17 @@ public class Cliente {
         sc.nextLine();
         switch(opcion){
             case 1:
+                Empleador aux = new Empleador();
                 System.out.println("Ingrese un nombre de usuario:");
                 String Nombre = sc.nextLine();
-                System.out.println("Enviando nombre.....");
-                socket.send(Nombre.getBytes(),0);
+                //System.out.println("Enviando nombre.....");
+                aux.setNombre(Nombre);
+                System.out.println("Ingrese clave de ingreso:");
+                String clave = sc.nextLine();
+                aux.setClave(clave);
+                System.out.println("Enviando datos....");
+                socket.send(aux.toString().getBytes(),0);
+                Thread.sleep(1000); 
                 break;
             case 2:
                 break;
