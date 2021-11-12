@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 import model.enums.Capacidad;
@@ -14,7 +15,7 @@ import model.enums.Sector;
  *
  * @author HP-PC
  */
-public class Oferta {
+public class Oferta implements Serializable {
     private String id;
     private String nombre;
     private Sector sector;

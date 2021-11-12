@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
  *
  * @author HP-PC
  */
-public class Empleador {
+public class Empleador implements Serializable {
     private String id;
     private String nombre;
     private String clave;

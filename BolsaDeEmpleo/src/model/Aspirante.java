@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 import model.enums.Capacidad;
@@ -14,7 +15,7 @@ import model.enums.Sector;
  *
  * @author HP-PC
  */
-public class Aspirante {
+public class Aspirante implements Serializable {
     private String id;
     private int nSubs;
     private String nombre;

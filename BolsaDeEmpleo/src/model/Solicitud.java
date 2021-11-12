@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  *
  * @author HP-PC
  */
-public class Solicitud {
+public class Solicitud implements Serializable {
     String id;
     Aspirante aspirante;
     String nombreOferta;
