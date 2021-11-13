@@ -40,11 +40,27 @@ public class Cliente {
        }while(opcion != 3);
       
     }
+    private static void Ingreso() throws InterruptedException{
+    ZMQ.Context context = ZMQ.context(1);
+        // Socket to talk to server
+        System.out.println("Conectando con el servidor....");
+        ZMQ.Socket socket = context.socket(ZMQ.REQ);
+        socket.connect ("tcp://localhost:5555");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese su nombre de usuario:");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese su clave:");
+        String clave = sc.nextLine();
+        String solicitud = "sol"+","+nombre+","+clave;
+        System.out.println("Enviando solicitud....");
+        socket.send(solicitud.getBytes(),0);
+      
+    }
     private static void Registro() throws InterruptedException{
        
          ZMQ.Context context = ZMQ.context(1);
         // Socket to talk to server
-        System.out.println("Connecting to hello world server");
+        System.out.println("Conectando con el servidor....");
         ZMQ.Socket socket = context.socket(ZMQ.REQ);
         socket.connect ("tcp://localhost:5555");
         

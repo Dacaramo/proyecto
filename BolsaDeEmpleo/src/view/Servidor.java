@@ -33,9 +33,12 @@ public class Servidor {
         // Socket to talk to clients
         ZMQ.Socket socket = context.socket(ZMQ.REP);
         socket.bind ("tcp://*:5555");
+        
+       // ZMQ.Poller poller = context.poller(2);
+       // poller.register(socket, ZMQ.Poller.POLLIN);
         try {
             while (!Thread.currentThread ().isInterrupted ()) {
-                
+                //poller.poll();
                 byte[] reply = socket.recv(0);
                 String cad=new String(reply);
                 StringTokenizer tok = new StringTokenizer(cad,",");
@@ -47,9 +50,10 @@ public class Servidor {
                     emp.setClave(tok.nextToken());
                     System.out.println("Empleador registrado");
                     System.out.println("Datos:"+emp.getId()+" "+emp.getNombre()+" "+emp.getClave());
+                    //ingresar a la base de datos
                     empleadoresTemp.add(emp);
                 }else if(fl.equals("asp")){
-                    System.out.println("holii");
+
                     Aspirante asp = new Aspirante();
                     asp.setId(tok.nextToken());
                     asp.setNombre(tok.nextToken());
@@ -57,6 +61,15 @@ public class Servidor {
                     asp.setEdad(Integer.parseInt(tok.nextToken()));
                     System.out.println("Aspirante registrado");
                     System.out.println("Datos:"+asp.getId()+" "+asp.getNombre()+" "+asp.getClave()+" "+asp.getEdad());
+                    //ingresar a la base de datos
+                    aspirantesTemp.add(asp);
+                }else if(fl.equals("sol")){
+                    boolean encontro = false;
+                    String usuario = tok.nextToken();
+                    String clave = tok.nextToken();
+                    for(Empleador emp:empleadoresTemp ){
+                        
+                    }
                 }
                
                 
