@@ -29,4 +29,4 @@
 
 ## Topología detallada de la bolsa de empleo
 
-![](images/TopologiaBolsaDeEmpleo.png)
+![](images/TopologíaBolsaDeEmpleo.png)
