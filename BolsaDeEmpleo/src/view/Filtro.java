@@ -33,7 +33,7 @@ import static view.ProveedorJDHT.serializarSolicitudes;
  *
  * @author HP-PC
  */
-public class Filtro {
+public class Filtro { //ESTA CLASE CONTIENE LA INSTANCIA PRINCIPAL DE LA DHT
 
     /**
      * @param args the command line arguments
@@ -47,7 +47,7 @@ public class Filtro {
         try 
         {
             JDHT DHT = new JDHT();
-            System.out.println("\n" + ConsoleColors.GREEN_BACKGROUND + ((JDHT) DHT).getReference() + ConsoleColors.RESET + "\n");
+            System.out.println("\n" + ConsoleColors.GREEN_BACKGROUND + ((JDHT) DHT).getReference() + ConsoleColors.RESET + "\n"); //TODO: Compartir esta referencia con todas las maquinas
             
             while(true) //Aca adentro se manejan todos los eventos de ZeroMQ
             {            
@@ -70,7 +70,7 @@ public class Filtro {
 //                }
 
                 if(cantiOfertas == 10){
-                    //TODO: Se envian las ofertas recolectadas a la DHT
+                    //Se envian las ofertas recolectadas a la DHT
                     DHT.put("ofertas-FUERZAS_MILITARES", ofertas.get("FUERZAS_MILITARES"));
                     DHT.put("ofertas-GERENCIA", ofertas.get("GERENCIA"));
                     DHT.put("ofertas-PROFESIONALES_INTELECTUALES", ofertas.get("PROFESIONALES_INTELECTUALES"));
@@ -83,7 +83,7 @@ public class Filtro {
                 }
 
                 if(cantiSolicitudes == 10){
-                    //TODO: Se envian las solicitudes recolectadas a la DHT
+                    //Se envian las solicitudes recolectadas a la DHT
                     DHT.put("solicitudes-FUERZAS_MILITARES", solicitudes.get("FUERZAS_MILITARES"));
                     DHT.put("solicitudes-GERENCIA", solicitudes.get("GERENCIA"));
                     DHT.put("solicitudes-PROFESIONALES_INTELECTUALES", solicitudes.get("PROFESIONALES_INTELECTUALES"));
@@ -347,47 +347,5 @@ public class Filtro {
         fr.close();
         
         return solicitudes;
-    }
-    
-    //EMPLEADORES Y ASPIRANTES
-    
-    public static void serializarEmpleadores(ArrayList<Empleador> empleadores) throws FileNotFoundException, IOException{
-        Gson gson = new Gson();
-        FileWriter fw = new FileWriter("src/files/empleadores.json");
-        gson.toJson(empleadores, fw);
-        String json = gson.toJson(empleadores);
-        System.out.println(json);
-        fw.flush();
-        fw.close();
-    }
-
-    public static void serializarAspirantes(ArrayList<Aspirante> aspirantes) throws FileNotFoundException, IOException{
-        Gson gson = new Gson();
-        FileWriter fw = new FileWriter("src/files/aspirantes.json");
-        gson.toJson(aspirantes, fw);
-        String json = gson.toJson(aspirantes);
-        System.out.println(json);
-        fw.flush();
-        fw.close();
-    }  
-    
-    public static ArrayList<Empleador> deserializarEmpleadores() throws FileNotFoundException, IOException{
-        Gson gson = new Gson();
-        FileReader fr = new FileReader("src/files/empleadores.json");
-        Type tipoEncontrado = new TypeToken<ArrayList<Empleador>>(){}.getType();
-        ArrayList<Empleador> empleadores = gson.fromJson(fr, tipoEncontrado);
-        fr.close();
-        
-        return empleadores;
-    }
-
-    public static ArrayList<Aspirante> deserializarAspirantes() throws FileNotFoundException, IOException{
-        Gson gson = new Gson();
-        FileReader fr = new FileReader("src/files/aspirantes.json");
-        Type tipoEncontrado = new TypeToken<ArrayList<Aspirante>>(){}.getType();
-        ArrayList<Aspirante> aspirantes = gson.fromJson(fr, tipoEncontrado);
-        fr.close();
-        
-        return aspirantes;
-    }  
+    } 
 }

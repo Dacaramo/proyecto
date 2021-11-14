@@ -42,7 +42,7 @@ public class Cliente {
     }
     private static void Registro() throws InterruptedException{
        
-         ZMQ.Context context = ZMQ.context(1);
+        ZMQ.Context context = ZMQ.context(1);
         // Socket to talk to server
         System.out.println("Connecting to hello world server");
         ZMQ.Socket socket = context.socket(ZMQ.REQ);
