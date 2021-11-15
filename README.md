@@ -2,7 +2,7 @@
 
 ## Consideraciones y aclaraciones
 
-* Porfavor acceda a [la documentación actualizada del proyecto](https://livejaverianaedu-my.sharepoint.com/:w:/g/personal/ramirezdr_javeriana_edu_co/EZiQu56qBnZIhyrGFe5txEkBCcjqfPlCFUjXgYsYbg7_jg?e=8ZMU4H)
+* Porfavor acceda a la [documentación actualizada del proyecto](https://livejaverianaedu-my.sharepoint.com/:w:/g/personal/ramirezdr_javeriana_edu_co/EZiQu56qBnZIhyrGFe5txEkBCcjqfPlCFUjXgYsYbg7_jg?e=8ZMU4H)
 * El proyecto fue realizado con el lenguaje de programación Java
 * La comunicación entre instancias fue realizada gracias a ZMQ y a la DHT implementada con la ayuda de DKS
 * La persistencia se realiza en colecciones de archivos .json que se encuentran locales en cada PC. Existe una colección idéntica por cada máquina de la topología por ende **NADA ESTÁ CENTRALIZADO Y TODO ESTÁ DISTRIBUIDO**.
