@@ -21,27 +21,24 @@ public class Oferta implements Serializable {
     private Sector sector;
     private int edadRequerida;
     private float sueldo;
-    private Empleador empleador;
+    private String Idempleador;
     private ArrayList<Capacidad> capacidadesRequeridas;
 
-    public Oferta(String nombre, Sector sector, int edadRequerida, float sueldo, Empleador empleador, ArrayList<Capacidad> capacidadesRequeridas) {
+    public Oferta(String id, String nombre, Sector sector, int edadRequerida, float sueldo, String Idempleador, ArrayList<Capacidad> capacidadesRequeridas) {
         this.id = UUID.randomUUID().toString();
         this.nombre = nombre;
         this.sector = sector;
         this.edadRequerida = edadRequerida;
         this.sueldo = sueldo;
-        this.empleador = empleador;
+        this.Idempleador = Idempleador;
         this.capacidadesRequeridas = capacidadesRequeridas;
     }
 
-    public ArrayList<Capacidad> getCapacidadesRequeridas() {
-        return capacidadesRequeridas;
+    
+    
+    public Oferta() {
+        this.id = UUID.randomUUID().toString();
     }
-
-    public void setCapacidadesRequeridas(ArrayList<Capacidad> capacidadesRequeridas) {
-        this.capacidadesRequeridas = capacidadesRequeridas;
-    }
-
 
     public String getId() {
         return id;
@@ -83,11 +80,22 @@ public class Oferta implements Serializable {
         this.sueldo = sueldo;
     }
 
-    public Empleador getEmpleador() {
-        return empleador;
+    public String getIdempleador() {
+        return Idempleador;
     }
 
-    public void setEmpleador(Empleador empleador) {
-        this.empleador = empleador;
-    } 
+    public void setIdempleador(String Idempleador) {
+        this.Idempleador = Idempleador;
+    }
+
+    public ArrayList<Capacidad> getCapacidadesRequeridas() {
+        return capacidadesRequeridas;
+    }
+
+    public void setCapacidadesRequeridas(ArrayList<Capacidad> capacidadesRequeridas) {
+        this.capacidadesRequeridas = capacidadesRequeridas;
+    }
+    
+
+    
 }

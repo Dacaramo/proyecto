@@ -60,11 +60,11 @@ public class ProveedorJDHT {
                 caps.addAll(list);
                 
                 ArrayList<Oferta> ofertas = new ArrayList<>();
-                ofertas.add(new Oferta("Cuidandero", Sector.TECNICOS, 41, 1200f, new Empleador("Daniel Gomez", "gomita123", ofs), caps));
+                /*ofertas.add(new Oferta("Cuidandero", Sector.TECNICOS, 41, 1200f, new Empleador("Daniel Gomez", "gomita123", ofs), caps));
                 ofertas.add(new Oferta("Secretario", Sector.APOYO_ADMINISTRATIVO,18, 1500f, new Empleador("Daniel Gomez", "gomita123", ofs), caps));
                 ofertas.add(new Oferta("Medico", Sector.PROFESIONALES_INTELECTUALES, 35, 7000f, new Empleador("Daniel Gomez", "gomita123", ofs), caps));
                 ofertas.add(new Oferta("Administrador", Sector.GERENCIA, 26, 1900f, new Empleador("Daniel Gomez", "gomita123", ofs), caps));
-                
+                */
                 serializarOfertas(ofertas);
                 
                 //SOLICITUDES
@@ -90,8 +90,8 @@ public class ProveedorJDHT {
                     System.out.println(o.getSector().toString());
                     System.out.println(o.getEdadRequerida());
                     System.out.println(o.getSueldo());
-                    System.out.println("\t" + o.getEmpleador().getNombre());
-                    System.out.println("\t" + o.getEmpleador().getClave());
+                    //System.out.println("\t" + o.getEmpleador().getNombre());
+                    //System.out.println("\t" + o.getEmpleador().getClave());
                     System.out.println(o.getCapacidadesRequeridas().toString());
                 }
                 

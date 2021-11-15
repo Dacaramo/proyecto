@@ -23,6 +23,7 @@ import org.kth.dks.JDHT;
 import org.kth.dks.dks_exceptions.DKSIdentifierAlreadyTaken;
 import org.kth.dks.dks_exceptions.DKSRefNoResponse;
 import org.kth.dks.dks_exceptions.DKSTooManyRestartJoins;
+import org.springframework.web.util.UriUtils;
 import org.zeromq.ZMQ;
 import static view.ProveedorJDHT.deserializarAspirantes;
 import static view.ProveedorJDHT.deserializarEmpleadores;
@@ -39,23 +40,28 @@ public class Servidor {
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
         //listas para persistencia temporal mientras se incorpora el DHT
         ArrayList<Oferta> ofertas = new ArrayList<>();
-        //ArrayList<Empleador> empleadores = deserializarEmpleadores();
-        //ArrayList<Aspirante> aspirantes = deserializarAspirantes();
-            ArrayList<Empleador> empleadores = new ArrayList<>();
-            ArrayList<Aspirante> aspirantes =new ArrayList<>();
+        ArrayList<Empleador> empleadores = deserializarEmpleadores();
+        ArrayList<Aspirante> aspirantes = deserializarAspirantes();
+            
         ZMQ.Context context = ZMQ.context(1);
         // Socket to talk to clients
         ZMQ.Socket socket = context.socket(ZMQ.REP);
         socket.bind ("tcp://*:5555");
+        
+        ZMQ.Socket so2 =context.socket(ZMQ.REP);
+        so2.bind("tcp://*:5556");
         
         
        // ZMQ.Poller poller = context.poller(2);
        // poller.register(socket, ZMQ.Poller.POLLIN);
         try {
             
-            //String ref = "CAMBIAR ESTO POR LA REFERENCIA RECIBIDA DESDE EL FILTRO"; //TODO: Recibir la referencia a la JDHT instanciada en el filtro
-            //JDHT DHT = new JDHT(5550, ref); //TODO: Generar un numero de puerto distinto por cada servidor que se levante
-            
+            byte[] me =so2.recv(0);
+            String ref = new String(me);//TODO: Recibir la referencia a la JDHT instanciada en el filtro
+            System.out.println(ref);
+            JDHT DHT = new JDHT(5550,ref); //TODO: Generar un numero de puerto distinto por cada servidor que se levante
+            String re = "hola";
+            so2.send(re,0);
             while (!Thread.currentThread ().isInterrupted ()) {
                 //poller.poll();
                 byte[] reply = socket.recv(0);
@@ -73,8 +79,8 @@ public class Servidor {
                     socket.send(hola,0);
                     
                     empleadores.add(emp);
-                    //serializarEmpleadores(empleadores); //Se persisten los empleadores que se han ido registrando, en los archivos locales
-                    //DHT.put("empleadores", empleadores); //Se envian los empleadores registrados a la DHT    
+                    serializarEmpleadores(empleadores); //Se persisten los empleadores que se han ido registrando, en los archivos locales
+                    DHT.put("empleadores", empleadores); //Se envian los empleadores registrados a la DHT    
                 }
                 else if(fl.equals("asp")){
                    // System.out.println("holii");
@@ -89,8 +95,8 @@ public class Servidor {
                      String hola = "hola";
                     socket.send(hola,0);
                     aspirantes.add(asp);
-                    //serializarAspirantes(aspirantes); //Se persisten los aspirantes que se han ido registrando, en los archivos locales
-                    //DHT.put("aspirantes", aspirantes); //Se envian los aspirantes registrados a la DHT
+                    serializarAspirantes(aspirantes); //Se persisten los aspirantes que se han ido registrando, en los archivos locales
+                    DHT.put("aspirantes", aspirantes); //Se envian los aspirantes registrados a la DHT
 
                 }else if(fl.equals("sol")){
                     System.out.println("aqui toy");
@@ -130,11 +136,11 @@ public class Servidor {
             
             //DHT.close();
             
-        } catch(/*IOException |*/ /*DKSTooManyRestartJoins |
-            DKSIdentifierAlreadyTaken | DKSRefNoResponse ex*/ Exception e) {
+        } catch(IOException | DKSTooManyRestartJoins |
+            DKSIdentifierAlreadyTaken | DKSRefNoResponse ex ) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
-            //ex.printStackTrace(pw);
+            ex.printStackTrace(pw);
             System.out.println(sw.toString());
         }
         
@@ -144,7 +150,7 @@ public class Servidor {
     }
     
     //SEREALIZACION
-    /*
+    
     public static void serializarEmpleadores(ArrayList<Empleador> empleadores) throws FileNotFoundException, IOException{
         Gson gson = new Gson();
         FileWriter fw = new FileWriter("src/files/empleadores.json");
@@ -186,5 +192,5 @@ public class Servidor {
         
         return aspirantes;
     } 
-    */
+    
 }

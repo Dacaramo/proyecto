@@ -25,6 +25,7 @@ import model.Solicitud;
 import model.enums.Capacidad;
 import model.enums.Sector;
 import org.kth.dks.JDHT;
+import org.zeromq.ZMQ;
 import static view.ProveedorJDHT.deserializarOfertas;
 import static view.ProveedorJDHT.serializarOfertas;
 import static view.ProveedorJDHT.serializarSolicitudes;
@@ -40,14 +41,19 @@ public class Filtro { //ESTA CLASE CONTIENE LA INSTANCIA PRINCIPAL DE LA DHT
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         int cantiOfertas = 0, cantiSolicitudes = 0;
-        
+        ZMQ.Context context = ZMQ.context(1);
         HashMap<String, ArrayList<Oferta>> ofertas = deserializarOfertas();
         HashMap<String, ArrayList<Solicitud>> solicitudes = deserializarSolicitudes();
+        
+        ZMQ.Socket socket = context.socket(ZMQ.REQ);
+        socket.connect ("tcp://localhost:5556");
         
         try 
         {
             JDHT DHT = new JDHT();
-            System.out.println("\n" + ConsoleColors.GREEN_BACKGROUND + ((JDHT) DHT).getReference() + ConsoleColors.RESET + "\n"); //TODO: Compartir esta referencia con todas las maquinas
+            String ref =((JDHT) DHT).getReference();
+            System.out.println(ref); //TODO: Compartir esta referencia con todas las maquinas
+            socket.send(ref.getBytes(),0);
             
             while(true) //Aca adentro se manejan todos los eventos de ZeroMQ
             {            
