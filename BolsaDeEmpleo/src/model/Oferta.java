@@ -95,7 +95,14 @@ public class Oferta implements Serializable {
     public void setCapacidadesRequeridas(ArrayList<Capacidad> capacidadesRequeridas) {
         this.capacidadesRequeridas = capacidadesRequeridas;
     }
-    
 
-    
+    @Override
+    public String toString() {
+        
+        String cad = this.id+","+this.Idempleador+","+this.nombre+","+this.sector+","+this.edadRequerida+","+this.sueldo+","+this.capacidadesRequeridas.size()+",";
+        for(Capacidad ca:this.capacidadesRequeridas){
+            cad+=ca.toString()+",";
+        }
+        return cad;
+    } 
 }
