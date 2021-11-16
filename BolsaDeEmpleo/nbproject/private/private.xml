@@ -4,15 +4,29 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/view/ProveedorJDHT.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/empleadores.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/ofertas/ofertas-GERENCIA.json</file>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/view/Servidor.java</file>
-            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/Oferta.java</file>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/view/Filtro.java</file>
-            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/view/ClienteJDHT.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/solicitudes/solicitudes-APOYO_ADMINISTRATIVO.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/solicitudes/solicitudes-FUERZAS_MILITARES.json</file>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/view/Cliente.java</file>
-            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/Aspirante.java</file>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/Empleador.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/ofertas/ofertas-TECNICOS.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/ofertas/ofertas-APOYO_ADMINISTRATIVO.json</file>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/ConsoleColors.java</file>
             <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/Solicitud.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/Oferta.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/solicitudes/solicitudes-PROFESIONALES_INTELECTUALES.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/enums/Capacidad.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/view/ClienteJDHT.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/ofertas/ofertas-PROFESIONALES_INTELECTUALES.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/solicitudes/solicitudes-GERENCIA.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/solicitudes/solicitudes-TECNICOS.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/Aspirante.java</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/aspirantes.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/files/ofertas/ofertas-FUERZAS_MILITARES.json</file>
+            <file>file:/D:/PROYECTO%20DE%20DISTRIBUIDOS%20ESTE%20ES%20SEGURISIMO%20xd/proyecto/BolsaDeEmpleo/src/model/enums/Sector.java</file>
         </group>
     </open-files>
 </project-private>
