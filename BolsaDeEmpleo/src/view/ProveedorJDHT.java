@@ -70,11 +70,11 @@ public class ProveedorJDHT {
                 //SOLICITUDES
                 
                 ArrayList<Solicitud> solicitudes = new ArrayList<>();
-                solicitudes.add(new Solicitud(null, "Pepito"));
-                solicitudes.add(new Solicitud(null, "Juan"));
-                solicitudes.add(new Solicitud(null, "Nico"));
-                solicitudes.add(new Solicitud(null, "Guillermo"));
-                solicitudes.add(new Solicitud(null, "Fernando"));
+                //solicitudes.add(new Solicitud(null, "Pepito"));
+                //solicitudes.add(new Solicitud(null, "Juan"));
+                //solicitudes.add(new Solicitud(null, "Nico"));
+                //solicitudes.add(new Solicitud(null, "Guillermo"));
+                //solicitudes.add(new Solicitud(null, "Fernando"));
                 
                 serializarSolicitudes(solicitudes);
                 

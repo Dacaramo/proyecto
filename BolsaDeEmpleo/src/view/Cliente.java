@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 import model.Aspirante;
 import model.Empleador;
 import model.Oferta;
+import model.Solicitud;
 import model.enums.Capacidad;
 import model.enums.Sector;
 import org.zeromq.SocketType;
@@ -77,6 +78,8 @@ public class Cliente {
 
                         if (TA.equals("emp")) {
                             Emp();
+                        }else{
+                            asp();
                         }
 
                     }
@@ -131,6 +134,7 @@ public class Cliente {
     public static void Emp() {
         Scanner sc = new Scanner(System.in);
         ZContext context = new ZContext();
+        
         ZMQ.Socket pub = context.createSocket(SocketType.PUB);
         pub.bind("tcp://*:5557");
         pub.bind("ipc://weather");
@@ -176,7 +180,7 @@ public class Cliente {
                     } else if (opOF == 5) {
                         of.setSector(Sector.APOYO_ADMINISTRATIVO);
                         idsub = "10005";
-                    }else if (opOF == 6) {
+                    } else if (opOF == 6) {
                         of.setSector(Sector.NINGUNO);
                         idsub = "10006";
                     }
@@ -230,9 +234,9 @@ public class Cliente {
                     System.out.println("Ingrese el sueldo:");
                     of.setSueldo(sc.nextFloat());
                     sc.nextLine();
-                    String ofertaING = idsub+","+of.toString();
+                    String ofertaING = idsub + " ," + of.toString();
                     System.out.println(ofertaING);
-                    pub.send(ofertaING,0);
+                    pub.send(ofertaING, 0);
                     break;
 
                 case 2:
@@ -240,6 +244,87 @@ public class Cliente {
 
             }
         } while (op != 3);
+        pub.close();
+    }
 
+    public static void asp() {
+        Scanner sc = new Scanner(System.in);
+        ZContext context = new ZContext();
+        ZMQ.Socket pub = context.createSocket(SocketType.PUB);
+        ZMQ.Context context1 = ZMQ.context(1);
+        ZMQ.Socket re = context1.socket(SocketType.REQ);
+        re.connect("tcp://localhost:5558");
+        pub.bind("tcp://*:5557");
+        pub.bind("ipc://weather");
+
+        int op = 0;
+
+        do {
+            System.out.println("Menu aspirantes:");
+            System.out.println("1.Enviar solicitud");
+            System.out.println("2.buzon");
+            System.out.println("3.salir");
+            op = sc.nextInt();
+            sc.nextLine();
+            switch (op) {
+                case 1:
+                    Solicitud solicitud = new Solicitud();
+                    ArrayList<Capacidad> cps = new ArrayList<>();
+                    System.out.println("Escriba el nombre de la oferta:");
+                    String nombre = sc.nextLine();
+                    solicitud.setNombreOferta(nombre);
+                    int opCA = 0;
+                    do {
+
+                        System.out.println("Seleccione las capacidades:");
+                        System.out.println("1.PREGRADO");
+                        System.out.println("2.MAESTRIA");
+                        System.out.println("3.DOCTORADO");
+                        System.out.println("4.EXPERIENCIA_LABORAL");
+                        System.out.println("5.ADAPTABILIDAD");
+                        System.out.println("6.COMUNICACION");
+                        System.out.println("7.RESOLUCION_PROBLEMAS");
+                        System.out.println("8.CREATIVIDAD");
+                        System.out.println("9.CONFIANZA");
+                        System.out.println("10.HONESTIDAD");
+                        System.out.println("11.PACIENCIA");
+                        System.out.println("12.Terminar seleccion");
+                        opCA = sc.nextInt();
+                        sc.nextLine();
+                        if (opCA == 1) {
+                            cps.add(Capacidad.PREGRADO);
+                        } else if (opCA == 2) {
+                            cps.add(Capacidad.MAESTRIA);
+                        } else if (opCA == 3) {
+                            cps.add(Capacidad.DOCTORADO);
+                        } else if (opCA == 4) {
+                            cps.add(Capacidad.EXPERIENCIA_LABORAL);
+                        } else if (opCA == 5) {
+                            cps.add(Capacidad.ADAPTABILIDAD);
+                        } else if (opCA == 6) {
+                            cps.add(Capacidad.COMUNICACION);
+                        } else if (opCA == 7) {
+                            cps.add(Capacidad.RESOLUCION_PROBLEMAS);
+                        } else if (opCA == 8) {
+                            cps.add(Capacidad.CREATIVIDAD);
+                        } else if (opCA == 9) {
+                            cps.add(Capacidad.CONFIANZA);
+                        } else if (opCA == 10) {
+                            cps.add(Capacidad.HONESTIDAD);
+                        } else if (opCA == 11) {
+                            cps.add(Capacidad.PACIENCIA);
+                        }
+
+                    } while (12 != opCA);
+                    solicitud.setAspirante(IDA);
+                    solicitud.setCapacidades(cps);
+                    String solicitudS = "sol"+","+solicitud.toString();
+                    System.out.println(solicitudS);
+                    pub.send(solicitudS,0);
+                    break;
+                case 2:
+                    break;
+            }
+        } while (op != 3);
     }
 }
