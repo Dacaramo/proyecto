@@ -51,17 +51,17 @@ public class Filtro { //ESTA CLASE CONTIENE LA INSTANCIA PRINCIPAL DE LA DHT
         HashMap<String, ArrayList<Solicitud>> solicitudes = deserializarSolicitudes();
 
         ZMQ.Socket suscriber = contx.createSocket(SocketType.SUB);
+        ZMQ.Socket suscriber2 = contx.createSocket(SocketType.SUB);
         ZMQ.Socket socket = context.socket(ZMQ.REQ);
         socket.connect("tcp://localhost:5556");
         suscriber.connect("tcp://localhost:5557");
-
+        suscriber2.connect("tcp://localhost:5558");
         // Socket to talk to clients
-        ZMQ.Socket socket2 = context.socket(ZMQ.REP);
-        socket2.bind("tcp://*:5558");
+        
 
         ZMQ.Poller poller = context.poller(1);
         poller.register(suscriber, ZMQ.Poller.POLLIN);
-        poller.register(socket2, ZMQ.Poller.POLLIN);
+        poller.register(suscriber2, ZMQ.Poller.POLLIN);
         try {
             JDHT DHT = new JDHT();
             String ref = ((JDHT) DHT).getReference();
@@ -70,116 +70,34 @@ public class Filtro { //ESTA CLASE CONTIENE LA INSTANCIA PRINCIPAL DE LA DHT
 
             while (!Thread.currentThread().isInterrupted()) //Aca adentro se manejan todos los eventos de ZeroMQ
             {
-                //if (poller.pollin(0)) {
                 String of = new String();
                 String key = new String();
                 Oferta oferta = new Oferta();
-                String FUERZAS_MILITARES = "10001 ";
-                suscriber.subscribe(FUERZAS_MILITARES.getBytes(ZMQ.CHARSET));
-                int val = poller.poll(1000);
-                if (val > 0) {
-                    of = suscriber.recvStr(0).trim();
-                    if (!esSolicitud(of)) {
-                        System.out.println("FUERZAS_MILITARES:" + of);
-                        key = new String();
-                        oferta = construirOferta(of, key);
-                        if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
-                            System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
-                            serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
-                            cantiOfertas++;
-                        }
+                int val = 0;
+                String OFERTA = "10001 ";
+                suscriber.subscribe(OFERTA.getBytes(ZMQ.CHARSET));
+                //int val = poller.poll(1000);
+                 byte [] offf;
+               while((offf = suscriber.recv(ZMQ.NOBLOCK)) !=null){
+                     
+                    of = new String(offf);
+                    System.out.println("OFERTA:" + of);
+                    key = new String();
+                    oferta = construirOferta(of, key);
+                    if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
+                        System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
+                        serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
+                        cantiOfertas++;
                     }
-                }
-                val = 0;
-                String GERENCIA = "10002 ";
-                suscriber.subscribe(GERENCIA.getBytes(ZMQ.CHARSET));
-                val = poller.poll(1000);
-                if (val > 0) {
-                    of = suscriber.recvStr(0).trim();
-                    if (!esSolicitud(of)) {
-                        System.out.println("GERENCIA:" + of);
-                        oferta = construirOferta(of, key);
-                        if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
-                            System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
-                            serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
-                            cantiOfertas++;
-                        }
-                    }
-                }
-                val = 0;
-                String PROFESIONALES_INTELECTUALES = "10003 ";
-                suscriber.subscribe(PROFESIONALES_INTELECTUALES.getBytes(ZMQ.CHARSET));
-                val = poller.poll(1000);
-                if (val > 0) {
-                    of = suscriber.recvStr(0).trim();
-                    if (!esSolicitud(of)) {
-                        System.out.println("PROFESIONALES_INTELECTUALES:" + of);
-                        oferta = construirOferta(of, key);
-                        if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
-                            System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
-                            serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
-                            cantiOfertas++;
-                        }
-                    }
-                }
-                val = 0;
-                String TECNICOS = "10004 ";
-                suscriber.subscribe(TECNICOS.getBytes(ZMQ.CHARSET));
-                val = poller.poll(1000);
-                if (val > 0) {
-                    of = suscriber.recvStr(0).trim();
-                    if (!esSolicitud(of)) {
-                        System.out.println("TECNICOS:" + of);
-                        oferta = construirOferta(of, key);
-                        if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
-                            System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
-                            serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
-                            cantiOfertas++;
-                        }
-                    }
-                }
-                val = 0;
-                String APOYO_ADMINISTRATIVO = "10005 ";
-                suscriber.subscribe(APOYO_ADMINISTRATIVO.getBytes(ZMQ.CHARSET));
-                val = poller.poll(1000);
-                if (val > 0) {
-                    of = suscriber.recvStr(0).trim();
-                    if (!esSolicitud(of)) {
-                        System.out.println("APOYO_ADMINISTRATIVO:" + of);
-                        oferta = construirOferta(of, key);
-                        if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
-                            System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
-                            serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
-                            cantiOfertas++;
-                        }
-                    }
-                }
-                val = 0;
-                String NINGUNO = "10006 ";
-                suscriber.subscribe(NINGUNO.getBytes(ZMQ.CHARSET));
-                val = poller.poll(1000);
-                if (val > 0) {
-                    of = suscriber.recvStr(0).trim();
-                    if (!esSolicitud(of)) {
-                        System.out.println("NINGUNO:" + of);
-                        oferta = construirOferta(of, key);
-                        if (ofertas.get(oferta.getSector().toString()).add(oferta)) { //Se guarda en el HashMap en memoria
-                            System.out.println("Oferta " + oferta.getId() + "filtrada correctamente");
-                            serializarOfertas(ofertas); //Se persisten las ofertas recolectadas en los archivos locales
-                            cantiOfertas++;
-                        }
-                    }
-                }
-
-                val = 0;
-                // }
-                String otro = "10007 ";
-                suscriber.subscribe(NINGUNO.getBytes(ZMQ.CHARSET));
-                val = poller.poll(1000);
-                if (val > 0) {
-
-                    String soli = suscriber.recvStr(0).trim();
-                    if (esSolicitud(soli)) {
+               }
+                String SOLICITUD = "10002 ";
+                suscriber2.subscribe(SOLICITUD.getBytes(ZMQ.CHARSET));
+                byte[] solll;
+                
+                      
+                    while((solll = suscriber2.recv(ZMQ.NOBLOCK))!=null){
+                        System.out.println("hoola");
+                        String soli = new String(solll);
                         Solicitud solicitud = crearSolicitud(soli);
 
                         for (Map.Entry entry : ofertas.entrySet()) {
@@ -187,7 +105,7 @@ public class Filtro { //ESTA CLASE CONTIENE LA INSTANCIA PRINCIPAL DE LA DHT
                             ArrayList<Oferta> oferta1 = (ArrayList<Oferta>) entry.getValue();
                             for (Oferta of1 : oferta1) {
                                 if (of1.getNombre().equals(solicitud.getNombreOferta())) {
-                                    if (solicitudes.get(key).add(solicitud)) { //Se guarda en el HashMap en memoria
+                                    if (solicitudes.get(key1).add(solicitud)) { //Se guarda en el HashMap en memoria
                                         System.out.println("Solicitud " + solicitud.getId() + "filtrada correctamente");
                                         serializarSolicitudes(solicitudes); //Se persisten las solicitudes recolectadas en los archivos locales
                                         cantiSolicitudes++;
@@ -196,8 +114,7 @@ public class Filtro { //ESTA CLASE CONTIENE LA INSTANCIA PRINCIPAL DE LA DHT
                             }
                         }
                     }
-                }
-
+                
 //                if(/*TODO: Si se recibe una solicitud por parte del Aspirante*/){
 //                    //Se filtra y se guarda la solicitud en el filtro en base al sector (en el HashMap de solicitudes)
 //                    if(solicitudes.get(solicitud.getSector().toString()).add(solicitud)) { //Se guarda en el HashMap en memoria

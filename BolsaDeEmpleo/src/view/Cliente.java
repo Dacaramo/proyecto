@@ -153,7 +153,7 @@ public class Cliente {
                     Oferta of = new Oferta();
                     ArrayList<Capacidad> cps = new ArrayList<>();
                     of.setIdempleador(IDA);
-                    String idsub = new String();
+                    String idsub = "10001";
                     int opOF,
                      opCA = 0;
                     System.out.println("Seleccione el sector de la oferta:");
@@ -167,22 +167,22 @@ public class Cliente {
                     sc.nextLine();
                     if (opOF == 1) {
                         of.setSector(Sector.FUERZAS_MILITARES);
-                        idsub = "10001";
+                        //idsub = "10001";
                     } else if (opOF == 2) {
                         of.setSector(Sector.GERENCIA);
-                        idsub = "10002";
+                        //idsub = "10002";
                     } else if (opOF == 3) {
                         of.setSector(Sector.PROFESIONALES_INTELECTUALES);
-                        idsub = "10003";
+                        //idsub = "10003";
                     } else if (opOF == 4) {
                         of.setSector(Sector.TECNICOS);
-                        idsub = "10004";
+                        //idsub = "10004";
                     } else if (opOF == 5) {
                         of.setSector(Sector.APOYO_ADMINISTRATIVO);
-                        idsub = "10005";
+                        //idsub = "10005";
                     } else if (opOF == 6) {
                         of.setSector(Sector.NINGUNO);
-                        idsub = "10006";
+                        // = "10006";
                     }
                     do {
 
@@ -254,7 +254,7 @@ public class Cliente {
         ZMQ.Context context1 = ZMQ.context(1);
         ZMQ.Socket re = context1.socket(SocketType.REQ);
         re.connect("tcp://localhost:5558");
-        pub.bind("tcp://*:5557");
+        pub.bind("tcp://*:5558");
         pub.bind("ipc://weather");
 
         int op = 0;
@@ -318,7 +318,7 @@ public class Cliente {
                     } while (12 != opCA);
                     solicitud.setAspirante(IDA);
                     solicitud.setCapacidades(cps);
-                    String solicitudS = "sol"+","+solicitud.toString();
+                    String solicitudS = "10002 "+","+solicitud.toString();
                     System.out.println(solicitudS);
                     pub.send(solicitudS,0);
                     break;
@@ -326,5 +326,6 @@ public class Cliente {
                     break;
             }
         } while (op != 3);
+        pub.close();
     }
 }
